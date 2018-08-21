@@ -1,6 +1,9 @@
 'use strict';
 
-var imageEl = document.getElementById('survey');
+var imageElOne = document.getElementById('picture-one');
+var imageElTwo = document.getElementById('picture-two');
+var imageElThree = document.getElementById('picture-three');
+
 
 var surveyResults = [];
 var clickCounter = 0;
@@ -19,22 +22,74 @@ surveyPictures.forEach(function(surveyResults) {
   new Survey(surveyResults);
 });
 
-function showRandomSurvey() {
+function showRandomSurveyOne() {
   var rando = Math.floor(surveyResults.length * Math.random());
-  imageEl.src = surveyResults[rando].path;
-  imageEl.title = surveyResults[rando].name;
+  imageElOne.src = surveyResults[rando].path;
+  imageElOne.title = surveyResults[rando].name;
+  var random = Math.floor(surveyResults.length * Math.random());
+  imageElTwo.src = surveyResults[random].path;
+  imageElTwo.title = surveyResults[random].name;
+  var randoma = Math.floor(surveyResults.length * Math.random());
+  imageElThree.src = surveyResults[randoma].path;
+  imageElThree.title = surveyResults[randoma].name;
   surveyResults[rando].timesShow++;
   surveyResults[rando].timesClicked++;
+  surveyResults[random].timesShow++;
+  surveyResults[random].timesClicked++;
+  surveyResults[randoma].timesShow++;
+  surveyResults[randoma].timesClicked++;
   clickCounter++;
   console.log(clickCounter);
   if(clickCounter > 25) {
-    imageEl.removeEventListener('click', showRandomSurvey);
+    imageElOne.removeEventListener('click', showRandomSurveyOne);
+    imageElTwo.removeEventListener('click', showRandomSurveyOne);
+    imageElThree.removeEventListener('click', showRandomSurveyOne);
   }
 }
 
-showRandomSurvey();
+// function showRandomSurveyTwo() {
+//   var rando = Math.floor(surveyResults.length * Math.random());
+//   imageElTwo.src = surveyResults[rando].path;
+//   imageElTwo.title = surveyResults[rando].name;
+//   surveyResults[rando].timesShow++;
+//   surveyResults[rando].timesClicked++;
+//   clickCounter++;
+//   console.log(clickCounter);
+//   if(clickCounter > 27) {
+//     imageElOne.removeEventListener('click', showRandomSurveyOne);
+//     imageElTwo.removeEventListener('click', showRandomSurveyTwo);
+//     imageElThree.removeEventListener('click', showRandomSurveyThree);
+//   }
+// }
 
-imageEl.addEventListener('click', showRandomSurvey);
+// function showRandomSurveyThree() {
+//   var rando = Math.floor(surveyResults.length * Math.random());
+//   imageElThree.src = surveyResults[rando].path;
+//   imageElThree.title = surveyResults[rando].name;
+//   surveyResults[rando].timesShow++;
+//   surveyResults[rando].timesClicked++;
+//   clickCounter++;
+//   console.log(clickCounter);
+//   if(clickCounter > 27) {
+//     imageElOne.removeEventListener('click', showRandomSurveyOne);
+//     imageElTwo.removeEventListener('click', showRandomSurveyTwo);
+//     imageElThree.removeEventListener('click', showRandomSurveyThree);
+//   }
+// }
+
+showRandomSurveyOne();
+// showRandomSurveyTwo();
+// showRandomSurveyThree();
+
+// if(imageElOne.addEventListener('click', showRandomSurveyOne) || imageElTwo.addEventListener('click', showRandomSurveyTwo) || imageElThree.addEventListener('click', showRandomSurveyThree)) {
+//   showRandomSurveyOne();
+//   showRandomSurveyTwo();
+//   showRandomSurveyThree();
+// }
+
+if(imageElOne.addEventListener('click', showRandomSurveyOne) || imageElTwo.addEventListener('click', showRandomSurveyOne) || imageElThree.addEventListener('click', showRandomSurveyOne)) {
+  showRandomSurveyOne();
+}
 
 
 
