@@ -4,7 +4,6 @@ var imageElOne = document.getElementById('picture-one');
 var imageElTwo = document.getElementById('picture-two');
 var imageElThree = document.getElementById('picture-three');
 
-
 var surveyResults = [];
 var clickCounter = 0;
 
@@ -47,45 +46,7 @@ function showRandomSurveyOne() {
   }
 }
 
-// function showRandomSurveyTwo() {
-//   var rando = Math.floor(surveyResults.length * Math.random());
-//   imageElTwo.src = surveyResults[rando].path;
-//   imageElTwo.title = surveyResults[rando].name;
-//   surveyResults[rando].timesShow++;
-//   surveyResults[rando].timesClicked++;
-//   clickCounter++;
-//   console.log(clickCounter);
-//   if(clickCounter > 27) {
-//     imageElOne.removeEventListener('click', showRandomSurveyOne);
-//     imageElTwo.removeEventListener('click', showRandomSurveyTwo);
-//     imageElThree.removeEventListener('click', showRandomSurveyThree);
-//   }
-// }
-
-// function showRandomSurveyThree() {
-//   var rando = Math.floor(surveyResults.length * Math.random());
-//   imageElThree.src = surveyResults[rando].path;
-//   imageElThree.title = surveyResults[rando].name;
-//   surveyResults[rando].timesShow++;
-//   surveyResults[rando].timesClicked++;
-//   clickCounter++;
-//   console.log(clickCounter);
-//   if(clickCounter > 27) {
-//     imageElOne.removeEventListener('click', showRandomSurveyOne);
-//     imageElTwo.removeEventListener('click', showRandomSurveyTwo);
-//     imageElThree.removeEventListener('click', showRandomSurveyThree);
-//   }
-// }
-
 showRandomSurveyOne();
-// showRandomSurveyTwo();
-// showRandomSurveyThree();
-
-// if(imageElOne.addEventListener('click', showRandomSurveyOne) || imageElTwo.addEventListener('click', showRandomSurveyTwo) || imageElThree.addEventListener('click', showRandomSurveyThree)) {
-//   showRandomSurveyOne();
-//   showRandomSurveyTwo();
-//   showRandomSurveyThree();
-// }
 
 if(imageElOne.addEventListener('click', showRandomSurveyOne) || imageElTwo.addEventListener('click', showRandomSurveyOne) || imageElThree.addEventListener('click', showRandomSurveyOne)) {
   showRandomSurveyOne();
