@@ -52,5 +52,5 @@ if(imageElOne.addEventListener('click', showRandomSurveyOne) || imageElTwo.addEv
   showRandomSurveyOne();
 }
 
-
+// can't quite figure out how to not repeat the pictures or not have them show up in the next cycle
 
