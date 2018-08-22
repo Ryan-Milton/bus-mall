@@ -4,3 +4,7 @@ body img {
   padding: 5px;
   width: 150px;
 }
+
+#chart {
+  margin: 250px;
+}

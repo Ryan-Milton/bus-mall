@@ -6,6 +6,7 @@ var imageElThree = document.getElementById('picture-three');
 
 var surveyResults = [];
 var clickCounter = 0;
+var clicksArray = [];
 
 var previous1 = -1;
 var previous2 = -1;
@@ -59,9 +60,7 @@ function showRandomSurveyOne(event) {
   previous3 = randoma;
 
   surveyResults[rando].timesShow++;
-
   surveyResults[random].timesShow++;
-
   surveyResults[randoma].timesShow++;
   clickCounter++;
 
@@ -69,6 +68,7 @@ function showRandomSurveyOne(event) {
     for(let i = 0; i < surveyPictures.length; i++ ) {
       if(surveyResults[i].name === event.target.title){
         surveyResults[i].imagesClicked++;
+        clicksArray.push(surveyResults[i].imagesClicked);
         console.log(surveyResults[i].imagesClicked);
       } else {
         continue;
@@ -80,6 +80,7 @@ function showRandomSurveyOne(event) {
     imageElOne.removeEventListener('click', showRandomSurveyOne);
     imageElTwo.removeEventListener('click', showRandomSurveyOne);
     imageElThree.removeEventListener('click', showRandomSurveyOne);
+    drawChart();
   }
 }
 
@@ -89,3 +90,73 @@ imageElOne.addEventListener('click', showRandomSurveyOne);
 imageElTwo.addEventListener('click', showRandomSurveyOne);
 imageElThree.addEventListener('click', showRandomSurveyOne);
 
+///////////chart stuff
+
+function drawChart() {
+  var ctx = document.getElementById('results-chart').getContext('2d');
+  var resultsChart = new Chart(ctx, { //eslint-disable-line
+    type: 'bar',
+    data: {
+      labels: surveyPictures,
+      datasets: [{
+        label: 'Number of Votes',
+        data: clicksArray,
+        backgroundColor: [
+          '#B0171F',
+          '#DC143C',
+          '#FFB6C1',
+          '#CD2990',
+          '#DA70D6',
+          '#FF00FF',
+          '#800080',
+          '#0000FF',
+          '#4169E1',
+          '#00BFFF',
+          '#00F5FF',
+          '#00FA9A',
+          '#008000',
+          '#698B22',
+          '#FFFF00',
+          '#FFA500',
+          '#7171C6',
+          '#C67171',
+          '#800000',
+          '#8E388E'
+        ],
+        hoverBackgroundColor: [
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00',
+          '#00FF00'
+        ],
+        borderColor: 'black',
+        borderWidth: 1,
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+}
