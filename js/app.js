@@ -1,5 +1,12 @@
 'use strict';
 
+if(localStorage.getItem('clicks') === null) {
+  console.log('empty');
+} else {
+  localStorage.getItem('clicks');
+}
+
+
 var imageElOne = document.getElementById('picture-one');
 var imageElTwo = document.getElementById('picture-two');
 var imageElThree = document.getElementById('picture-three');
@@ -70,6 +77,8 @@ function showRandomSurveyOne(event) {
         surveyResults[i].imagesClicked++;
         clicksArray.push(surveyResults[i].imagesClicked);
         console.log(surveyResults[i].imagesClicked);
+        localStorage.setItem('clicks', JSON.stringify(clicksArray));
+        console.log();
       } else {
         continue;
       }
